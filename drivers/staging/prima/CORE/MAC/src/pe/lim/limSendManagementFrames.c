@@ -6126,8 +6126,8 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
     statusCode = eSIR_FAILURE;
     //Pkt will be freed up by the callback
     return statusCode;
-  }
-  else
+    }
+    else
     return eSIR_SUCCESS;
 
     returnAfterError:
@@ -6306,9 +6306,9 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
          )
-    {
-        txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
-    }
+     {
+         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
+     }
 
    txFlag |= HAL_USE_PEER_STA_REQUESTED_MASK;
 
@@ -6332,20 +6332,20 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
     statusCode = eSIR_FAILURE;
     //Pkt will be freed up by the callback
     return statusCode;
-  }
-  else
+    }
+    else
     return eSIR_SUCCESS;
 
     returnAfterError:
 
       // Release buffer, if allocated
-      if( NULL != pDelBAIndBuffer )
-        palPktFree( pMac->hHdd,
-            HAL_TXRX_FRM_802_11_MGMT,
-            (void *) pDelBAIndBuffer,
-            (void *) pPacket );
+    if( NULL != pDelBAIndBuffer )
+      palPktFree( pMac->hHdd,
+          HAL_TXRX_FRM_802_11_MGMT,
+          (void *) pDelBAIndBuffer,
+          (void *) pPacket );
 
-      return statusCode;
+    return statusCode;
 }
 
 #if defined WLAN_FEATURE_VOWIFI

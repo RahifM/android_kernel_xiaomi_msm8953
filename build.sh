@@ -1,5 +1,5 @@
 #!/bin/sh
-export CROSS_COMPILE="/home/rahif/android/kernels/toolchains/aarch64-gcc/bin/aarch64-linux-android-"
+export CROSS_COMPILE="/home/tejachaitu96/.kernel/aarch64-android/bin/aarch64-linux-android-"
 
 export ARCH=arm64
 

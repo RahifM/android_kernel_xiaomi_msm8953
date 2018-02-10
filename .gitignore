@@ -39,6 +39,13 @@ Module.symvers
 *.dwo
 *.su
 *.c.[012]*.*
+*.img
+*.rej
+*.zip
+*.sha1
+Image.gz-dtb
+buildlog*.txt
+changelog.txt
 
 #
 # Top-level generic files

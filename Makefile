@@ -1,6 +1,6 @@
 VERSION = 3
 PATCHLEVEL = 18
-SUBLEVEL = 97
+SUBLEVEL = 98
 EXTRAVERSION = -TwrkStallion
 NAME = Diseased Newt
 

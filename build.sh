@@ -33,7 +33,7 @@ ZIP_DIR=$KERNEL_DIR/AnyKernel2
 CONFIG_DIR=$KERNEL_DIR/arch/arm64/configs
 
 #export
-export CROSS_COMPILE="$HOME/.kernel/build-tools-gcc/aarch64-linux-gnu/bin/aarch64-linux-gnu-"
+export CROSS_COMPILE="$HOME/.kernel/gcc-arm-8.2-2018.08-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-"
 export ARCH=arm64
 export SUBARCH=arm64
 

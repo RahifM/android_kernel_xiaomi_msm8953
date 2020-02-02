@@ -33,7 +33,8 @@ ZIP_DIR=$KERNEL_DIR/AnyKernel2
 CONFIG_DIR=$KERNEL_DIR/arch/arm64/configs
 
 #export
-export CROSS_COMPILE="$HOME/android/kernels/toolchains/aarch64-gcc/bin/aarch64-linux-android-"
+export CROSS_COMPILE="$HOME/android/aosp9/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
+export CROSS_COMPILE_ARM32="$HOME/android/aosp9/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-"
 export ARCH=arm64
 export SUBARCH=arm64
 

@@ -1076,7 +1076,7 @@ void __set_task_comm(struct task_struct *tsk, const char *buf, bool exec)
 {
 	task_lock(tsk);
 	trace_task_rename(tsk, buf);
-	strlcpy(tsk->comm, buf, sizeof(tsk->comm));
+	strlcpy(tsk->comm, buf, TASK_COMM_LEN);
 	task_unlock(tsk);
 	perf_event_comm(tsk, exec);
 }

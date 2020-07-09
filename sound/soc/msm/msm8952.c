@@ -281,9 +281,10 @@ static int enable_spk_ext_pa(struct snd_soc_codec *codec, int enable)
 {
 	struct snd_soc_card *card = codec->component.card;
 	struct msm8916_asoc_mach_data *pdata = snd_soc_card_get_drvdata(card);
-	int ret;
 #ifdef CONFIG_MACH_XIAOMI_MIDO
 	int pa_mode = EXT_PA_MODE;
+#else
+        int ret;
 #endif
 
 	if (!gpio_is_valid(pdata->spk_ext_pa_gpio)) {

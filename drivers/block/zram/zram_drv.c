@@ -1290,15 +1290,12 @@ out_free_dev:
 
 static void zram_remove(struct zram *zram)
 {
-<<<<<<< HEAD
 	struct zram *zram;
 	unsigned int i;
 
 	for (i = 0; i < nr; i++) {
 		zram = &zram_devices[i];
-=======
 	pr_info("Removed device: %s\n", zram->disk->disk_name);
->>>>>>> b6e8d1fd5c801... [BACKPORT] zram: report every added and removed device
 	/*
 	 * Remove sysfs first, so no one will perform a disksize
 	 * store while we destroy the devices

@@ -1292,7 +1292,6 @@ out:
 
 static void destroy_devices(unsigned int nr)
 {
-<<<<<<< HEAD
 	struct zram *zram;
 	unsigned int i;
 
@@ -1302,8 +1301,6 @@ static void destroy_devices(unsigned int nr)
 		 * Remove sysfs first, so no one will perform a disksize
 		 * store while we destroy the devices
 		 */
-		sysfs_remove_group(&disk_to_dev(zram->disk)->kobj,
-				&zram_disk_attr_group);
 
 		zram_reset_device(zram);
 
@@ -1311,10 +1308,6 @@ static void destroy_devices(unsigned int nr)
 		del_gendisk(zram->disk);
 		put_disk(zram->disk);
 	}
-=======
-	del_gendisk(zram->disk);
-	put_disk(zram->disk);
->>>>>>> f14086aedea00... zram: close udev startup race condition as default groups
 
 	kfree(zram_devices);
 	unregister_blkdev(zram_major, "zram");

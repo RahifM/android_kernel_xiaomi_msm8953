@@ -1258,24 +1258,17 @@ out_free_dev:
 
 static void zram_remove(struct zram *zram)
 {
-<<<<<<< HEAD
 	struct zram *zram;
 	unsigned int i;
 
 	for (i = 0; i < nr; i++) {
 		zram = &zram_devices[i];
-		/*
-		 * Remove sysfs first, so no one will perform a disksize
-		 * store while we destroy the devices
-		 */
-=======
 	/*
 	 * Remove sysfs first, so no one will perform a disksize
 	 * store while we destroy the devices
 	 */
 	sysfs_remove_group(&disk_to_dev(zram->disk)->kobj,
 			&zram_disk_attr_group);
->>>>>>> 20c49ec4545aa... [BACKPORT] zram: use idr instead of `zram_devices' array
 
 	zram_reset_device(zram);
 	idr_remove(&zram_index_idr, zram->disk->first_minor);

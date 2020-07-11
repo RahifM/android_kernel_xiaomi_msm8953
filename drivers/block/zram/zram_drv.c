@@ -1298,14 +1298,11 @@ out_free_dev:
 
 static int zram_remove(struct zram *zram)
 {
-<<<<<<< HEAD
 	struct zram *zram;
 	unsigned int i;
 
 	for (i = 0; i < nr; i++) {
 		zram = &zram_devices[i];
-	pr_info("Removed device: %s\n", zram->disk->disk_name);
-=======
 	struct block_device *bdev;
 
 	bdev = bdget_disk(zram->disk, 0);
@@ -1322,7 +1319,6 @@ static int zram_remove(struct zram *zram)
 	zram->claim = true;
 	mutex_unlock(&bdev->bd_mutex);
 
->>>>>>> 6e0bfd8bcf4cd... zram: add dynamic device add/remove functionality
 	/*
 	 * Remove sysfs first, so no one will perform a disksize
 	 * store while we destroy the devices. This also helps during

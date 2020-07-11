@@ -1329,11 +1329,6 @@ out_free_dev:
 
 static int zram_remove(struct zram *zram)
 {
-	struct zram *zram;
-	unsigned int i;
-
-	for (i = 0; i < nr; i++) {
-		zram = &zram_devices[i];
 	struct block_device *bdev;
 
 	bdev = bdget_disk(zram->disk, 0);

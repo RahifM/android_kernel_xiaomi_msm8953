@@ -503,7 +503,12 @@ static int snd_compress_check_input(struct snd_compr_params *params)
 {
 	/* first let's check the buffer parameter's */
 	if (params->buffer.fragment_size == 0 ||
+<<<<<<< HEAD
 	    params->buffer.fragments > U32_MAX / params->buffer.fragment_size)
+=======
+	    params->buffer.fragments > INT_MAX / params->buffer.fragment_size ||
+	    params->buffer.fragments == 0)
+>>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 		return -EINVAL;
 
 	/* now codec parameters */

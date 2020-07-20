@@ -826,7 +826,11 @@ static int truncate_node(struct dnode_of_data *dn)
 {
 	struct f2fs_sb_info *sbi = F2FS_I_SB(dn->inode);
 	struct node_info ni;
+<<<<<<< HEAD
 	int err;
+=======
+	pgoff_t index;
+>>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 
 	err = f2fs_get_node_info(sbi, dn->nid, &ni);
 	if (err)
@@ -846,10 +850,11 @@ static int truncate_node(struct dnode_of_data *dn)
 	clear_node_page_dirty(dn->node_page);
 	set_sbi_flag(sbi, SBI_IS_DIRTY);
 
+	index = dn->node_page->index;
 	f2fs_put_page(dn->node_page, 1);
 
 	invalidate_mapping_pages(NODE_MAPPING(sbi),
-			dn->node_page->index, dn->node_page->index);
+			index, index);
 
 	dn->node_page = NULL;
 	trace_f2fs_truncate_node(dn->inode, dn->nid, ni.blk_addr);

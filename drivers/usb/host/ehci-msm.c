@@ -100,14 +100,19 @@ static int ehci_msm_probe(struct platform_device *pdev)
 		return  -ENOMEM;
 	}
 
+<<<<<<< HEAD
 	hcd_to_bus(hcd)->skip_resume = true;
 
 	hcd->irq = platform_get_irq(pdev, 0);
 	if (hcd->irq < 0) {
+=======
+	ret = platform_get_irq(pdev, 0);
+	if (ret < 0) {
+>>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 		dev_err(&pdev->dev, "Unable to get IRQ resource\n");
-		ret = hcd->irq;
 		goto put_hcd;
 	}
+	hcd->irq = ret;
 
 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	if (!res) {

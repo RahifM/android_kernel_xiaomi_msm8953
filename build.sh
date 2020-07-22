@@ -31,6 +31,8 @@ KERNEL_DIR=$PWD
 KERN_IMG=$KERNEL_DIR/out/arch/arm64/boot/Image.gz-dtb
 ZIP_DIR=$KERNEL_DIR/AnyKernel2
 CONFIG_DIR=$KERNEL_DIR/arch/arm64/configs
+TELEGRAM=$HOME/telegram.sh/telegram
+ZIP=$KERNEL_DIR/AnyKernel2/*.zip
 
 #export
 export CROSS_COMPILE="$HOME/kernel/gcc10/arm64/bin/aarch64-elf-"
@@ -47,7 +49,8 @@ echo -e "\n$green[1]Build kernel"
 echo -e "[2]Regenerate defconfig"
 echo -e "[3]Source cleanup"
 echo -e "[4]Generate flashable zip"
-echo -e "[5]Quit$nc"
+echo -e "[5]Upload zip"
+echo -e "[6]Quit$nc"
 echo -ne "\n$blue(i)Please enter a choice[1-5]:$nc "
 
 read choice
@@ -119,8 +122,13 @@ if [ "$choice" == "4" ]; then
   echo -e "$cyan#######################################################################$nc"
 fi
 
-
 if [ "$choice" == "5" ]; then
+  cd $ZIP_DIR
+  $TELEGRAM -f $ZIP
+  cd ..
+fi
+
+if [ "$choice" == "6" ]; then
  exit 1
 fi
 done

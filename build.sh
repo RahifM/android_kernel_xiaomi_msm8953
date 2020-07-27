@@ -37,6 +37,7 @@ LOG=$KERNEL_DIR/buildlog*.txt
 
 #export
 export CROSS_COMPILE="$HOME/kernel/gcc10/arm64/bin/aarch64-elf-"
+export CROSS_COMPILE="$HOME/android/pa/prebuilts/gcc/linux-x86/aarch64/aarch64-elf/bin/aarch64-elf-"
 export ARCH=arm64
 export SUBARCH=arm64
 

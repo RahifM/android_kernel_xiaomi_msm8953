@@ -1,3 +1,4 @@
+
 /*
  * X-Box gamepad driver
  *
@@ -140,12 +141,7 @@ static const struct xpad_device {
 	{ 0x045e, 0x0288, "Microsoft Xbox Controller S v2", 0, XTYPE_XBOX },
 	{ 0x045e, 0x0289, "Microsoft X-Box pad v2 (US)", 0, XTYPE_XBOX },
 	{ 0x045e, 0x028e, "Microsoft X-Box 360 pad", 0, XTYPE_XBOX360 },
-<<<<<<< HEAD
-	{ 0x045e, 0x02d1, "Microsoft X-Box One pad", 0, XTYPE_XBOXONE },
-	{ 0x045e, 0x02dd, "Microsoft X-Box One pad (Covert Forces)", 0, XTYPE_XBOXONE },
-=======
 	{ 0x045e, 0x028f, "Microsoft X-Box 360 pad v2", 0, XTYPE_XBOX360 },
->>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 	{ 0x045e, 0x0291, "Xbox 360 Wireless Receiver (XBOX)", MAP_DPAD_TO_BUTTONS, XTYPE_XBOX360W },
 	{ 0x045e, 0x02d1, "Microsoft X-Box One pad", 0, XTYPE_XBOXONE },
 	{ 0x045e, 0x02dd, "Microsoft X-Box One pad (Firmware 2015)", 0, XTYPE_XBOXONE },
@@ -312,14 +308,11 @@ static const struct xpad_device {
 	{ 0x1bad, 0xf900, "Harmonix Xbox 360 Controller", 0, XTYPE_XBOX360 },
 	{ 0x1bad, 0xf901, "Gamestop Xbox 360 Controller", 0, XTYPE_XBOX360 },
 	{ 0x1bad, 0xf903, "Tron Xbox 360 controller", 0, XTYPE_XBOX360 },
-<<<<<<< HEAD
-=======
 	{ 0x1bad, 0xf904, "PDP Versus Fighting Pad", 0, XTYPE_XBOX360 },
 	{ 0x1bad, 0xf906, "MortalKombat FightStick", MAP_TRIGGERS_TO_BUTTONS, XTYPE_XBOX360 },
 	{ 0x1bad, 0xfa01, "MadCatz GamePad", 0, XTYPE_XBOX360 },
 	{ 0x1bad, 0xfd00, "Razer Onza TE", 0, XTYPE_XBOX360 },
 	{ 0x1bad, 0xfd01, "Razer Onza", 0, XTYPE_XBOX360 },
->>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 	{ 0x24c6, 0x5000, "Razer Atrox Arcade Stick", MAP_TRIGGERS_TO_BUTTONS, XTYPE_XBOX360 },
 	{ 0x24c6, 0x5300, "PowerA MINI PROEX Controller", 0, XTYPE_XBOX360 },
 	{ 0x24c6, 0x5303, "Xbox Airflo wired controller", 0, XTYPE_XBOX360 },
@@ -599,10 +592,7 @@ struct usb_xpad {
 	int xtype;			/* type of xbox device */
 	int pad_nr;			/* the order x360 pads were attached */
 	const char *name;		/* name of the device */
-<<<<<<< HEAD
-=======
 	struct work_struct work;	/* init/remove device from callback */
->>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 };
 
 static int xpad_init_input(struct usb_xpad *xpad);
@@ -761,9 +751,6 @@ static void xpad360_process_packet(struct usb_xpad *xpad, struct input_dev *dev,
 	input_sync(dev);
 }
 
-<<<<<<< HEAD
-static void xpad_identify_controller(struct usb_xpad *xpad);
-=======
 static void xpad_presence_work(struct work_struct *work)
 {
 	struct usb_xpad *xpad = container_of(work, struct usb_xpad, work);
@@ -788,7 +775,6 @@ static void xpad_presence_work(struct work_struct *work)
 		xpad_deinit_input(xpad);
 	}
 }
->>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 
 /*
  * xpad360w_process_packet
@@ -811,24 +797,12 @@ static void xpad360w_process_packet(struct usb_xpad *xpad, u16 cmd, unsigned cha
 
 	/* Presence change */
 	if (data[0] & 0x08) {
-<<<<<<< HEAD
-		if (data[1] & 0x80) {
-			xpad->pad_present = 1;
-			/*
-			 * Light up the segment corresponding to
-			 * controller number.
-			 */
-			xpad_identify_controller(xpad);
-		} else
-			xpad->pad_present = 0;
-=======
 		present = (data[1] & 0x80) != 0;
 
 		if (xpad->pad_present != present) {
 			xpad->pad_present = present;
 			schedule_work(&xpad->work);
 		}
->>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 	}
 
 	/* Valid pad data */
@@ -981,8 +955,6 @@ exit:
 			__func__, retval);
 }
 
-<<<<<<< HEAD
-=======
 /* Callers must hold xpad->odata_lock spinlock */
 static bool xpad_prepare_next_init_packet(struct usb_xpad *xpad)
 {
@@ -1071,7 +1043,6 @@ static int xpad_try_sending_next_out_packet(struct usb_xpad *xpad)
 	return 0;
 }
 
->>>>>>> 6b1ae527b1fdee86e81da0cb26ced75731c6c0fa
 static void xpad_irq_out(struct urb *urb)
 {
 	struct usb_xpad *xpad = urb->context;

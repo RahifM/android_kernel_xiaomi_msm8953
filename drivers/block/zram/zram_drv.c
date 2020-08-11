@@ -1230,11 +1230,15 @@ static const struct attribute_group *zram_disk_attr_groups[] = {
 	NULL,
 };
 
+<<<<<<< HEAD
 /*
  * Allocate and initialize new zram device. the function returns
  * '>= 0' device_id upon success, and negative value otherwise.
  */
 static int zram_add(void)
+=======
+static int create_device(struct zram *zram, int device_id)
+>>>>>>> 88dac11123f6805cf448deb96c2aad84e7b8168e
 {
 	struct zram *zram;
 	struct request_queue *queue;
@@ -1315,9 +1319,12 @@ static int zram_add(void)
 	strlcpy(zram->compressor, default_compressor, sizeof(zram->compressor));
 	zram->meta = NULL;
 
+<<<<<<< HEAD
 	pr_info("Added device: %s\n", zram->disk->disk_name);
 	return device_id;
 
+=======
+>>>>>>> 88dac11123f6805cf448deb96c2aad84e7b8168e
 out_free_queue:
 	blk_cleanup_queue(queue);
 out_free_idr:
@@ -1329,6 +1336,7 @@ out_free_dev:
 
 static int zram_remove(struct zram *zram)
 {
+<<<<<<< HEAD
 	struct block_device *bdev;
 
 	bdev = bdget_disk(zram->disk, 0);
@@ -1363,6 +1371,8 @@ static int zram_remove(struct zram *zram)
 	pr_info("Removed device: %s\n", zram->disk->disk_name);
 
 	blk_cleanup_queue(zram->disk->queue);
+=======
+>>>>>>> 88dac11123f6805cf448deb96c2aad84e7b8168e
 	del_gendisk(zram->disk);
 	put_disk(zram->disk);
 	kfree(zram);

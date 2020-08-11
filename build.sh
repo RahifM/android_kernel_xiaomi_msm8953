@@ -63,7 +63,7 @@ if [ "$choice" == "1" ]; then
   echo -e "\n$cyan#######################################################################$nc"
   echo -e "$brown(i)Build started at $DATE$nc"
   make $CONFIG $THREAD O=out/
-  make $THREAD O=out/ 2>&1 | tee buildlog.txt
+  make $THREAD O=out/ 2>&1 | tee buildlog-mido.txt
   spin[0]="$blue-"
   spin[1]="\\"
   spin[2]="|"

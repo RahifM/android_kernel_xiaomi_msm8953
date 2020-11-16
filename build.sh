@@ -36,7 +36,7 @@ CONFIG_DIR=$KERNEL_DIR/arch/arm64/configs
 #export CROSS_COMPILE="$HOME/kernel/gcc10/arm64/bin/aarch64-elf-"
 #export ARCH=arm64
 #export SUBARCH=arm64
-PATH="$HOME/roms/clang/clang-r365631c/bin:$HOME/roms/gcc/aarch64/bin:$HOME/roms/gcc/arm/bin:${PATH}" \
+PATH="$HOME/android/r/prebuilts/clang/host/linux-x86/clang-r365631c/bin:$HOME/android/r/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$HOME/android/r/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:${PATH}" \
 
 #misc
 #CONFIG=mido_defconfig

@@ -36,7 +36,8 @@ CONFIG_DIR=$KERNEL_DIR/arch/arm64/configs
 #export CROSS_COMPILE="$HOME/kernel/gcc10/arm64/bin/aarch64-elf-"
 #export ARCH=arm64
 #export SUBARCH=arm64
-PATH="$HOME/android/r/prebuilts/clang/host/linux-x86/clang-r365631c/bin:$HOME/android/r/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$HOME/android/r/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:${PATH}" \
+#PATH="$HOME/android/r/prebuilts/clang/host/linux-x86/clang-r365631c/bin:$HOME/android/r/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$HOME/android/r/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:${PATH}" \
+PATH="$HOME/android/proton-clang/bin:$PATH"
 
 #misc
 #CONFIG=mido_defconfig
@@ -65,9 +66,8 @@ make O=out ARCH=arm64 mido_defconfig
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
                       CC=clang \
-                      CLANG_TRIPLE=aarch64-linux-gnu- \
-                      CROSS_COMPILE=aarch64-linux-android- \
-                      CROSS_COMPILE_ARM32=arm-linux-androideabi-
+                      CROSS_COMPILE=aarch64-linux-gnu- \
+                      CROSS_COMPILE_ARM32=arm-linux-gnueabi-
   spin[0]="$blue-"
   spin[1]="\\"
   spin[2]="|"

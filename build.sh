@@ -54,7 +54,7 @@ echo -e "[4]Generate flashable zip"
 echo -e "[5]Upload zip"
 echo -e "[6]Upload buildlog"
 echo -e "[7]Quit$nc"
-echo -ne "\n$blue(i)Please enter a choice[1-5]:$nc "
+echo -ne "\n$blue(i)Please enter a choice[1-7]:$nc "
 
 read choice
 

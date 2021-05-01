@@ -45,13 +45,7 @@ KBUILD_CFLAGS	+= $(vdso32)
 KBUILD_CFLAGS	+= -mgeneral-regs-only
 KBUILD_CFLAGS	+= -fno-pic
 KBUILD_CFLAGS	+= $(call cc-option, -mpc-relative-literal-loads)
-<<<<<<< HEAD
-=======
-endif
 KBUILD_AFLAGS	+= $(vdso32)
-
-KBUILD_CFLAGS	+= $(call cc-ifversion, -ge, 0500, -DCONFIG_ARCH_SUPPORTS_INT128)
->>>>>>> 99c59f3d0273... FROMLIST: BACKPORT: [PATCH 6/6] arm64: Wire up and expose the new compat vDSO
 
 ifeq ($(CONFIG_CPU_BIG_ENDIAN), y)
 KBUILD_CPPFLAGS	+= -mbig-endian

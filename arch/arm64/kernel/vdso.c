@@ -39,17 +39,11 @@
 #include <asm/vdso.h>
 #include <asm/vdso_datapage.h>
 
-<<<<<<< HEAD
-extern char vdso_start[], vdso_end[];
-static unsigned long vdso_pages;
-static struct page **vdso_pagelist;
-=======
 struct vdso_mappings {
 	unsigned long num_code_pages;
 	struct vm_special_mapping data_mapping;
 	struct vm_special_mapping code_mapping;
 };
->>>>>>> 79900e2c9d96... FROMLIST: BACKPORT: [PATCH 3/6] arm64: Refactor vDSO init/setup
 
 /*
  * The vDSO data page.
@@ -178,20 +172,6 @@ static int __init vdso_mappings_init(const char *name,
 	struct page **vdso_pagelist;
 	unsigned long pfn;
 
-<<<<<<< HEAD
-	if (memcmp(vdso_start, "\177ELF", 4)) {
-		pr_err("vDSO is not a valid ELF object!\n");
-		return -EINVAL;
-	}
-
-	vdso_pages = (vdso_end - vdso_start) >> PAGE_SHIFT;
-	pr_info("vdso: %ld pages (%ld code @ %p, %ld data @ %p)\n",
-		vdso_pages + 1, vdso_pages, vdso_start, 1L, vdso_data);
-
-	/* Allocate the vDSO pagelist, plus a page for the data. */
-	vdso_pagelist = kcalloc(vdso_pages + 1, sizeof(struct page *),
-				GFP_KERNEL);
-=======
 	if (memcmp(code_start, "\177ELF", 4)) {
 		pr_err("%s is not a valid ELF object!\n", name);
 		return -EINVAL;
@@ -210,7 +190,6 @@ static int __init vdso_mappings_init(const char *name,
 	 */
 	vdso_pagelist = kmalloc_array(vdso_pages + 1, sizeof(struct page *),
 				      GFP_KERNEL);
->>>>>>> 79900e2c9d96... FROMLIST: BACKPORT: [PATCH 3/6] arm64: Refactor vDSO init/setup
 	if (vdso_pagelist == NULL)
 		return -ENOMEM;
 
@@ -218,11 +197,7 @@ static int __init vdso_mappings_init(const char *name,
 	vdso_pagelist[0] = phys_to_page(__pa_symbol(vdso_data));
 
 	/* Grab the vDSO code pages. */
-<<<<<<< HEAD
-	pfn = sym_to_pfn(vdso_start);
-=======
 	pfn = sym_to_pfn(code_start);
->>>>>>> 79900e2c9d96... FROMLIST: BACKPORT: [PATCH 3/6] arm64: Refactor vDSO init/setup
 
 	for (i = 0; i < vdso_pages; i++)
 		vdso_pagelist[i + 1] = pfn_to_page(pfn + i);
@@ -366,12 +341,7 @@ void update_vsyscall(struct timekeeper *tk)
 		vdso_data->raw_time_sec		= tk->raw_sec;
 		vdso_data->raw_time_nsec	= tk->tkr_raw.xtime_nsec;
 		vdso_data->xtime_clock_sec	= tk->xtime_sec;
-<<<<<<< HEAD
-		vdso_data->xtime_clock_nsec	= tk->tkr_mono.xtime_nsec;
-=======
 		vdso_data->xtime_clock_snsec	= tk->tkr_mono.xtime_nsec;
-		/* tkr_raw.xtime_nsec == 0 */
->>>>>>> c6c66905598b... FROMLIST: BACKPORT: [PATCH v5 10/12] arm64: vdso: replace gettimeofday.S with global vgettimeofday.C
 		vdso_data->cs_mono_mult		= tk->tkr_mono.mult;
 		vdso_data->cs_raw_mult		= tk->tkr_raw.mult;
 		/* tkr_mono.shift == tkr_raw.shift */

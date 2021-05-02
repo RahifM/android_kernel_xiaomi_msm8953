@@ -1,4 +1,4 @@
-NAME ?= BarongFam-mido
+NAME ?= mido
 
 DATE := $(shell date +'%Y%m%d-%H%M')
 

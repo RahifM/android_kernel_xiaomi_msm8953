@@ -79,7 +79,7 @@ if [ "$choice" == "1" ]; then
           sleep 0.1
     done
   done
-  if ! [ -a $KERN_IMG ]; then
+  if ! [ -a $KERN_IMG ]; then # FIXME: On dirty builds this returns as success
     echo -e "\n$red(!)Kernel compilation failed.$nc"
     echo -e "$red#######################################################################$nc"
     exit 1

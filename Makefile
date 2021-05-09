@@ -404,8 +404,6 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
-                   -Wno-array-bounds \
-                   -Wno-restrict \
 		   -std=gnu89
 
 # Avoid gcc-10 regression
